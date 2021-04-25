@@ -65,7 +65,7 @@ void readNvRamValues(){
      NZRAM.get(AD_DOWN, &down, 1);
      NZRAM.get(AD_UP, &up, 1);
      NZRAM.get(AD_IDLE, &idle, 1);
-     //DebugPrintln("ReadNVRAM ");
+     DebugPrintln("ReadNVRAM ");
      printVar();
 }
 

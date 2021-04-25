@@ -6,10 +6,14 @@
 #include "functions.h"
 
 void adjustUp(int pause){
+int valSave;
+    valSave = currentCount;
     if(currentCount ==0)
       currentCount = 100;
     upBlind();
     delay(pause);
+    if (valSave == 0)
+      currentCount = 0;
     stopBlind();
 }
 
