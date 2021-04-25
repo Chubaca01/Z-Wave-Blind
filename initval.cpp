@@ -32,13 +32,13 @@ void initInputOutput(){
   pinMode(in1, OUTPUT);
   pinMode(in2, OUTPUT);
   pinMode(out1, OUTPUT);
-  
+
   digitalWrite(out1,LOW);
   digitalWrite(in1,HIGH);
   digitalWrite(in2,HIGH);
-  
+
   pinMode(LED_BUILTIN, OUTPUT);
-  
+
 
   zunoExtIntMode(ZUNO_EXT_ZEROX, RISING);
   zunoExtIntMode(ZUNO_EXT_INT0, RISING);
@@ -65,7 +65,7 @@ void readNvRamValues(){
      NZRAM.get(AD_DOWN, &down, 1);
      NZRAM.get(AD_UP, &up, 1);
      NZRAM.get(AD_IDLE, &idle, 1);
-     DebugPrintln("ReadNVRAM ");
+     //DebugPrintln("ReadNVRAM ");
      printVar();
 }
 
