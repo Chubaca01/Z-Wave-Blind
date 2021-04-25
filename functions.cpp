@@ -18,6 +18,10 @@ void setShadeToTarget(BYTE newValue){
     targetCount = positionToCount(newValue);
     action = DOWN;
   }
+  else if (newValue == 100)
+  {
+    action = INT_INT0;
+  }
   else
     action = GO_SLEEP;
 }
@@ -100,7 +104,7 @@ void checkTimeOut()
   delayMicroseconds(1000);
   timeOutVal -= 1;
   if (timeOutVal <= 0)
-  { 
+  {
     if (up == 1) // stuck up
     {
       currentCount = 0;
