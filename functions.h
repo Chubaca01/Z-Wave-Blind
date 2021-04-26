@@ -12,4 +12,5 @@ word LoadCFGParam(byte param);
 void buttonPressed();
 void resetTimeOut();
 void checkTimeOut();
+int measureBattery();
 #endif

@@ -8,7 +8,10 @@
   #define MAX_RVOLT 3.27
 
   #define MAXCOUNT 6500
-
+  #define OFFSET 00
+  #define ADJUST 20
+  #define TIME_OUT_VAL 100
+ 
   #define battery 6
   #define button1 9
   #define button2 10
@@ -40,7 +43,7 @@
   #define WAIT       5
   #define GO_SLEEP   6
   
-  #define TIME_OUT_VAL 100
+ 
   
 
   extern BYTE currentPosition;

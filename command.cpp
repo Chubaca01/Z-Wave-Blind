@@ -19,6 +19,8 @@ int valSave;
 
 void upBlind()
   {
+    if (currentCount >= MAXCOUNT)
+      currentCount += OFFSET;
     digitalWrite(LED_BUILTIN, HIGH);
     down = 0;
     up = 1;
@@ -58,10 +60,10 @@ void stopBlind()
     DebugValPrintln(currentCount);
     DebugPrint("Current Position:");
     DebugValPrintln(currentPosition);
-    my_battery_handler();
     down = 0;
     up = 0;
     idle = 1;
+    zunoSendReport(1);
     action = GO_SLEEP;
   }
 
@@ -75,7 +77,6 @@ void stopBlind()
   }
 
   void goToSleep(){
-    zunoSendReport(1);
     writeNvRamValues();
     digitalWrite(LED_BUILTIN, LOW);
     digitalWrite(out1,LOW);

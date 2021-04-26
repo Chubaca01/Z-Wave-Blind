@@ -18,10 +18,6 @@ void setShadeToTarget(BYTE newValue){
     targetCount = positionToCount(newValue);
     action = DOWN;
   }
-  else if (newValue == 100)
-  {
-    action = INT_INT0;
-  }
   else
     action = GO_SLEEP;
 }
@@ -116,4 +112,20 @@ void checkTimeOut()
     }
     action = GO_SLEEP;
   }
+}
+
+int measureBattery(){
+  float value;
+  int percent;
+  resetTimeOut();
+  value = MAX_VOLT*readBattery();
+  value /= 1023;
+  value = (MAX_RVOLT - value)*100;
+  value /= (MAX_RVOLT - MIN_VOLT);
+  percent = 100 - value;
+  if (percent > 100)
+    percent = 100;
+  DebugPrint("Battery Value %: ");
+  DebugValPrintln(percent);
+  return percent;
 }

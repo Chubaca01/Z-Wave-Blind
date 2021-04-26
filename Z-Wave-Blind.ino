@@ -31,6 +31,7 @@ byte n;
     n = MAGIC_VALUE;
     NZRAM.put(AD_MAGIC_VALUE, &n, 1);
     InitVariables();
+    zunoSendReport(1);
     action = GO_SLEEP;
   }
   else{
@@ -69,12 +70,11 @@ void stateCommand()
       break;
     case STOP:
       stopBlind();
-      //action = WAIT;
       break;
     case INT_ZEROX:  
       break;
     case INT_INT0:  
-      adjustUp(200);    
+      //adjustUp(ADJUST);    
       break;
     case WAIT:
       checkTimeOut();      
@@ -107,24 +107,15 @@ BYTE getterFunction() {
 
 void setterFunction(BYTE newValue) {
 unsigned int target;
+  digitalWrite(LED_BUILTIN, HIGH);
   resetTimeOut();
   newVal= newValue;
   setShadeToTarget(newVal);
 }
 
 int my_battery_handler() {
-  float value;
   int percent;
-  resetTimeOut();
-  value = MAX_VOLT*readBattery();
-  value /= 1023;
-  value = (MAX_RVOLT - value)*100;
-  value /= (MAX_RVOLT - MIN_VOLT);
-  percent = 100 - value;
-  if (percent > 100)
-    percent = 100;
-  DebugPrint("Battery Value %: ");
-  DebugValPrintln(percent);
+  percent = measureBattery();
   return(percent);
 }
 
