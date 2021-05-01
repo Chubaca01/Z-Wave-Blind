@@ -7,11 +7,12 @@
   #define MIN_VOLT 2.7
   #define MAX_RVOLT 3.27
 
-  #define MAXCOUNT 6500
+  #define MAXCOUNT 8850
   #define OFFSET 00
-  #define ADJUST 20
-  #define TIME_OUT_VAL 100
- 
+  #define ADJUST 50
+  #define TIME_OUT_DELAY 120   
+  #define TIME_OUT_VAL 120    // x * timeout delay 100/100 100/120
+
   #define battery 6
   #define button1 9
   #define button2 10
@@ -42,9 +43,9 @@
   #define INT_INT0   4
   #define WAIT       5
   #define GO_SLEEP   6
-  
- 
-  
+
+
+
 
   extern BYTE currentPosition;
   extern dword currentCount;

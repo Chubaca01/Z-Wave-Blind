@@ -31,8 +31,9 @@ byte n;
     n = MAGIC_VALUE;
     NZRAM.put(AD_MAGIC_VALUE, &n, 1);
     InitVariables();
+    measureBattery();
     zunoSendReport(1);
-    action = GO_SLEEP;
+    action = WAIT;
   }
   else{
     DebugPrintln("Just not Boot ...");
@@ -62,27 +63,27 @@ void checkMotorlocation(){
 void stateCommand()
 {
   switch(action){
-    case UP:  
-      upBlind();    
+    case UP:
+      upBlind();
       break;
     case DOWN:
-      downBlind();   
+      downBlind();
       break;
     case STOP:
       stopBlind();
       break;
-    case INT_ZEROX:  
+    case INT_ZEROX:
       break;
-    case INT_INT0:  
-      //adjustUp(ADJUST);    
+    case INT_INT0:
+      adjustUp(ADJUST);
       break;
     case WAIT:
-      checkTimeOut();      
+      checkTimeOut();
       break;
     case GO_SLEEP:
       goToSleep();
       zunoSendDeviceToSleep();
-      break; 
+      break;
     default:
       checkTimeOut();
       break;
@@ -93,7 +94,7 @@ void loop() {
  // buttonPressed();
 #ifdef SLEEPING
   stateCommand();
-#else  
+#else
   delay(20);
 #endif
 }
@@ -108,12 +109,13 @@ BYTE getterFunction() {
 void setterFunction(BYTE newValue) {
 unsigned int target;
   digitalWrite(LED_BUILTIN, HIGH);
-  resetTimeOut();
   newVal= newValue;
   setShadeToTarget(newVal);
+  resetTimeOut();
 }
 
 int my_battery_handler() {
+  resetTimeOut();
   int percent;
   percent = measureBattery();
   return(percent);
@@ -137,7 +139,7 @@ void intButtonPressed(){
 
 
 void SaveCFGParam(byte param, word value){
-  zunoSaveCFGParam(param,value); 
+  zunoSaveCFGParam(param,value);
 }
 
 word LoadCFGParam(byte param){

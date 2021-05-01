@@ -12,8 +12,8 @@ int valSave;
       currentCount = 100;
     upBlind();
     delay(pause);
-    if (valSave == 0)
-      currentCount = 0;
+    //if (valSave == 0)
+    currentCount = 0;
     stopBlind();
 }
 
@@ -64,7 +64,7 @@ void stopBlind()
     up = 0;
     idle = 1;
     zunoSendReport(1);
-    action = GO_SLEEP;
+    action = WAIT;
   }
 
   int readBattery(){

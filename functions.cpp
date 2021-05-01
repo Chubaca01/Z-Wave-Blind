@@ -19,7 +19,7 @@ void setShadeToTarget(BYTE newValue){
     action = DOWN;
   }
   else
-    action = GO_SLEEP;
+    action = WAIT;
 }
 
 
@@ -97,7 +97,8 @@ void resetTimeOut()
 
 void checkTimeOut()
 {
-  delayMicroseconds(1000);
+  //delay(TIME_OUT_DELAY);
+  delayMicroseconds(TIME_OUT_DELAY);
   timeOutVal -= 1;
   if (timeOutVal <= 0)
   {
