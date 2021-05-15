@@ -5,7 +5,7 @@
   #define NB_BATTERY_READ 20
   #define MAX_VOLT 3.3
   #define MIN_VOLT 2.7
-  #define MAX_RVOLT 3.27
+  #define MAX_RVOLT 3.2
 
   #define MAXCOUNT 8850
   #define OFFSET 00
@@ -16,11 +16,11 @@
   #define battery 6
   #define button1 9
   #define button2 10
-  //#define button3 11
+  #define button3 17
 
   #define in1 20
   #define in2 21
-  #define out1 12
+  #define out1 19
 
   #define MAGIC_VALUE 56 // bytes
   #define AD_MAGIC_VALUE 0x0 // bytes

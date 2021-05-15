@@ -15,6 +15,7 @@ int valSave;
     //if (valSave == 0)
     currentCount = 0;
     stopBlind();
+    delay(5000);
 }
 
 void upBlind()
@@ -28,7 +29,7 @@ void upBlind()
     //DebugPrintln("Blinds up");
     digitalWrite(in1,HIGH);
     digitalWrite(in2,LOW);
-    digitalWrite(out1,HIGH);
+    digitalWrite(out1,LOW);
     action = WAIT;
   }
 
@@ -41,13 +42,13 @@ void downBlind()
     //DebugPrintln("Blinds down");
     digitalWrite(in1,LOW);
     digitalWrite(in2,HIGH);
-    digitalWrite(out1,HIGH);
+    digitalWrite(out1,LOW);
     action = WAIT;
   }
 
 void stopBlind()
   {
-    digitalWrite(out1,LOW);
+    digitalWrite(out1,HIGH);
     digitalWrite(in1,HIGH);
     digitalWrite(in2,HIGH);
 
@@ -79,7 +80,7 @@ void stopBlind()
   void goToSleep(){
     writeNvRamValues();
     digitalWrite(LED_BUILTIN, LOW);
-    digitalWrite(out1,LOW);
+    digitalWrite(out1,HIGH);
     digitalWrite(in1,HIGH);
     digitalWrite(in2,HIGH);
   }

@@ -12,6 +12,7 @@ void InitVariables(){
   up = 0;
   idle = 1;
   currentPosition = 100;
+  pressed3 = false;
   paramValue = LoadCFGParam(AD_MAGIG_VALUE_EEP);
   if (paramValue != MAGIG_VALUE_EEP){ // first time run
     SaveCFGParam(AD_MAGIG_VALUE_EEP, MAGIG_VALUE_EEP);
@@ -33,7 +34,7 @@ void initInputOutput(){
   pinMode(in2, OUTPUT);
   pinMode(out1, OUTPUT);
 
-  digitalWrite(out1,LOW);
+  digitalWrite(out1,HIGH);
   digitalWrite(in1,HIGH);
   digitalWrite(in2,HIGH);
 
@@ -41,7 +42,7 @@ void initInputOutput(){
 
 
   zunoExtIntMode(ZUNO_EXT_ZEROX, RISING);
-  zunoExtIntMode(ZUNO_EXT_INT0, RISING);
+  zunoExtIntMode(ZUNO_EXT_INT0, FALLING);
 }
 
 void printVar(){

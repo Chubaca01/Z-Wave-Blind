@@ -91,7 +91,7 @@ void stateCommand()
 }
 
 void loop() {
- // buttonPressed();
+  buttonPressed();
 #ifdef SLEEPING
   stateCommand();
 #else

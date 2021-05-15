@@ -26,8 +26,8 @@ void setShadeToTarget(BYTE newValue){
 int isButtonPressed(int button){
   int val;
   val = digitalRead(button);
-  if (val == HIGH) {
-    while (val == HIGH){
+  if (val == LOW) {
+    while (val == LOW){
       val = digitalRead(button);
       delay(20);
     }
@@ -57,12 +57,14 @@ void buttonPressed(){
       pressed2 = false;
     }
 #endif
-  //if (pressed3 == true)
-   // {
-      delay(20);
-      adjustUp(100);
-   //   pressed3 = false;
-   // }
+  if(isButtonPressed(button3))
+      pressed3 = true;
+  if (pressed3 == true)
+    {
+      targetCount= 0;
+      upBlind();
+      pressed3 = false;
+    }
  }
 
 dword positionToCount(BYTE pos){
